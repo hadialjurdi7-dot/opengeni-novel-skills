@@ -9,11 +9,11 @@ description: "مسار تشغيل رواية «الكتاب كائن حي»: ا�
 الرواية **مكتوبة بالفعل**: 12 فصلاً، ~67,207 كلمة. أي مهمة جديدة تدور حول التحرير والتجميع والتشخيص، لا حول «التخطيط من الصفر». لا تقترح كتابة الرواية من جديد ولا تطلب من المستخدم «بذرة فكرة».
 
 ## ما هو موجود وأين
-- فهرس أرشيف Manus: `/opt/data/manus-index/manus_files_index.csv` (5,036 ملف، فيه `title` و`novel` لكل ملف).
-- تصنيف ملفات الرواية: `/opt/data/manus-index/novel_buckets.json` (CHAPTER / SCENES / QA / PLAN / BIBLE / OTHER).
-- جرد الفصول: `/opt/data/manus-index/novel_inventory.json` (أفضل ملف لكل فصل 1–12).
-- النص المجمّع: `/opt/data/novel/الكتاب_كائن_حي_كامل.md` + `الكتاب_كائن_حي.epub`.
-- سكربتات: `/opt/data/novel/build_book.py` (تجميع + EPUB)، `/opt/data/manus-index/novel_inventory.py`، `/opt/data/manus-index/classify_novel.py`.
+- فهرس أرشيف Manus: `<index-dir>/manus_files_index.csv` (5,036 ملف، فيه `title` و`novel` لكل ملف).
+- تصنيف ملفات الرواية: `<index-dir>/novel_buckets.json` (CHAPTER / SCENES / QA / PLAN / BIBLE / OTHER).
+- جرد الفصول: `<index-dir>/novel_inventory.json` (أفضل ملف لكل فصل 1–12).
+- النص المجمّع: `<novel-dir>/الكتاب_كائن_حي_كامل.md` + `الكتاب_كائن_حي.epub`.
+- سكربتات: `<novel-dir>/build_book.py` (تجميع + EPUB)، `<index-dir>/novel_inventory.py`، `<index-dir>/classify_novel.py`.
 
 ## نصاب الفصول الحالي (كلمات)
 1–6 في ملف نهائي واحد `FINAL_VOL1_CH01-06.md` = 22,916 · 7 = 13,253 · 8 = 6,651 · 9 = 6,403 · 10 = 5,226 · 11 = 7,025 · 12 = 5,733.
@@ -23,7 +23,7 @@ description: "مسار تشغيل رواية «الكتاب كائن حي»: ا�
 2. **حدّد الفصل**: استعمل الجرد؛ لا تفتح أرشيف Manus كاملاً لكل طلب (5 آلاف ملف = ضجيج).
 3. **اعمل على أفضل نسخة**: النسخة الأكبر لكل رقم فصل ليست دائماً الأفضل تحريرياً؛ ملفات `QA_VQxx` هي تقارير تدقيق وليست متناً، و`INT_VIxx` هي الدمج التحريري.
 4. **أي تعديل على المتن**: اكتب نسخة جديدة باسم `INT_VIxx_v2.md` ولا تكتب فوق الأصل.
-5. **التجميع**: `python3 /opt/data/novel/build_book.py` ثم تحقّق من عدد الكلمات وبنية EPUB (`zipfile.testzip() == None`).
+5. **التجميع**: `python3 <novel-dir>/build_book.py` ثم تحقّق من عدد الكلمات وبنية EPUB (`zipfile.testzip() == None`).
 
 ## أخطاء معروفة
 - EPUB وZIP غير مدعومين في قاعدة معرفة OpenGeni (conversion error) → ارفع `.md` أو `.pdf` فقط.
